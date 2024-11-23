@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindu Baby Names</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Hindu Baby Names</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="mb-4">Find the Perfect Hindu Name</h1>
+                
+                <!-- Advanced Search Section -->
+                <div class="search-container mb-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/search" method="GET" class="search-form">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <input type="text" name="q" class="form-control form-control-lg" 
+                                               placeholder="Search for baby names...">
+                                    </div>
+                                    
+                                    <!-- Filters -->
+                                    <div class="col-md-4">
+                                        <select name="gender" class="form-select">
+                                            <option value="all">All Genders</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <select id="rashiFilter" class="form-select">
+                                            <option value="">All Rashis</option>
+                                            
+                                            <option value="Dhanu (Sagittarius)">Dhanu (Sagittarius)</option>
+                                            
+                                            <option value="Kanya (Virgo)">Kanya (Virgo)</option>
+                                            
+                                            <option value="Kark (Cancer)">Kark (Cancer)</option>
+                                            
+                                            <option value="Kumbh (Aquarius)">Kumbh (Aquarius)</option>
+                                            
+                                            <option value="Makar (Capricorn)">Makar (Capricorn)</option>
+                                            
+                                            <option value="Meen (Pisces)">Meen (Pisces)</option>
+                                            
+                                            <option value="Mesh (Aries)">Mesh (Aries)</option>
+                                            
+                                            <option value="Mithun (Gemini)">Mithun (Gemini)</option>
+                                            
+                                            <option value="Simha (Leo)">Simha (Leo)</option>
+                                            
+                                            <option value="Tula (Libra)">Tula (Libra)</option>
+                                            
+                                            <option value="Vrishabh (Taurus)">Vrishabh (Taurus)</option>
+                                            
+                                            <option value="Vrishchik (Scorpio)">Vrishchik (Scorpio)</option>
+                                            
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <select id="sortBy" class="form-select">
+                                            <option value="">Sort By</option>
+                                            <option value="name">Name (A-Z)</option>
+                                            <option value="popularity">Popularity</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div id="searchResults" class="search-results mt-3"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alphabet Navigation -->
+                <div class="alphabet-nav mb-5">
+                    
+                    <a href="/a" class="btn btn-outline-primary m-1">A</a>
+                    
+                    <a href="/b" class="btn btn-outline-primary m-1">B</a>
+                    
+                    <a href="/c" class="btn btn-outline-primary m-1">C</a>
+                    
+                    <a href="/d" class="btn btn-outline-primary m-1">D</a>
+                    
+                    <a href="/e" class="btn btn-outline-primary m-1">E</a>
+                    
+                    <a href="/f" class="btn btn-outline-primary m-1">F</a>
+                    
+                    <a href="/g" class="btn btn-outline-primary m-1">G</a>
+                    
+                    <a href="/h" class="btn btn-outline-primary m-1">H</a>
+                    
+                    <a href="/i" class="btn btn-outline-primary m-1">I</a>
+                    
+                    <a href="/j" class="btn btn-outline-primary m-1">J</a>
+                    
+                    <a href="/k" class="btn btn-outline-primary m-1">K</a>
+                    
+                    <a href="/l" class="btn btn-outline-primary m-1">L</a>
+                    
+                    <a href="/m" class="btn btn-outline-primary m-1">M</a>
+                    
+                    <a href="/n" class="btn btn-outline-primary m-1">N</a>
+                    
+                    <a href="/o" class="btn btn-outline-primary m-1">O</a>
+                    
+                    <a href="/p" class="btn btn-outline-primary m-1">P</a>
+                    
+                    <a href="/q" class="btn btn-outline-primary m-1">Q</a>
+                    
+                    <a href="/r" class="btn btn-outline-primary m-1">R</a>
+                    
+                    <a href="/s" class="btn btn-outline-primary m-1">S</a>
+                    
+                    <a href="/t" class="btn btn-outline-primary m-1">T</a>
+                    
+                    <a href="/u" class="btn btn-outline-primary m-1">U</a>
+                    
+                    <a href="/v" class="btn btn-outline-primary m-1">V</a>
+                    
+                    <a href="/w" class="btn btn-outline-primary m-1">W</a>
+                    
+                    <a href="/x" class="btn btn-outline-primary m-1">X</a>
+                    
+                    <a href="/y" class="btn btn-outline-primary m-1">Y</a>
+                    
+                    <a href="/z" class="btn btn-outline-primary m-1">Z</a>
+                    
+                </div>
+
+                <!-- Featured Names Section -->
+                <div class="featured-names mt-5">
+                    <h2 class="mb-4">Popular Hindu Names</h2>
+                    <div class="row" id="featuredNames">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/search.js"></script>
+</body>
+</html>
