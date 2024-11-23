@@ -1,0 +1,124 @@
+<!-- Common Header with Search and Alphabet List -->
+<div class="header-container">
+    <!-- Search Box -->
+    <div class="search-container">
+        <form action="{{ url_for('search_page') }}" method="GET" class="search-form">
+            <input type="text" name="q" id="search-input" placeholder="Search baby names..." autocomplete="off">
+            <select name="gender" id="gender-filter">
+                <option value="all">All</option>
+                <option value="male">Boy</option>
+                <option value="female">Girl</option>
+                <option value="unisex">Unisex</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Alphabet List -->
+    <div class="alphabet-list">
+        {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+            <a href="{{ url_for('names_by_letter', letter=letter) }}" class="alphabet-link">{{ letter }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Header Styles -->
+<style>
+.header-container {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #ff6b6b;
+    outline: none;
+}
+
+#gender-filter {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    padding: 12px 24px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #ff5252;
+}
+
+.alphabet-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.alphabet-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    color: #495057;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.alphabet-link:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+    }
+    
+    .alphabet-list {
+        gap: 6px;
+    }
+    
+    .alphabet-link {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}
+</style>

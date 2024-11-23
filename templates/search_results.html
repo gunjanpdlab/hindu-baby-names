@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Hindu Baby Names</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="results-container">
+        <h1 class="results-title">Search Results{% if query %} for "{{ query }}"{% endif %}</h1>
+        
+        {% if results %}
+        <div class="results-grid">
+            {% for name, details in results.items() %}
+            <div class="name-card {% if details.popularity.is_popular %}popular{% endif %}">
+                <h2>
+                    <a href="{{ url_for('name_details', name=name) }}">{{ name }}</a>
+                    {% if details.popularity.is_popular %}
+                    <span class="popular-badge">Popular</span>
+                    {% endif %}
+                </h2>
+                <div class="name-info">
+                    <p class="gender-tag {{ details.gender.lower() }}">{{ details.gender }}</p>
+                    <p class="meaning">{{ details.meaning }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('name_details', name=name) }}" class="view-details">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-results">
+            <p>No names found matching your search criteria.</p>
+            <p>Try:</p>
+            <ul>
+                <li>Using different keywords</li>
+                <li>Checking the spelling</li>
+                <li>Removing filters</li>
+                <li>Browsing names by alphabet instead</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <style>
+    .results-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .results-title {
+        font-size: 2em;
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .name-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .name-card.popular {
+        border: 2px solid #ffd700;
+        background: linear-gradient(to bottom right, #fff, #fffdf0);
+    }
+
+    .name-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .name-card h2 {
+        margin: 0 0 15px 0;
+    }
+
+    .name-card h2 a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-size: 1.5em;
+    }
+
+    .popular-badge {
+        display: inline-block;
+        background: #ffd700;
+        color: #000;
+        font-size: 0.7em;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-left: 8px;
+        vertical-align: middle;
+        font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+        .popular-badge {
+            display: block;
+            margin: 5px 0 0 0;
+            text-align: center;
+            font-size: 0.6em;
+        }
+    }
+
+    .name-info {
+        margin-bottom: 15px;
+    }
+
+    .gender-tag {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .gender-tag.male {
+        background: #e3f2fd;
+        color: #1976d2;
+    }
+
+    .gender-tag.female {
+        background: #fce4ec;
+        color: #c2185b;
+    }
+
+    .gender-tag.unisex {
+        background: #f3e5f5;
+        color: #7b1fa2;
+    }
+
+    .meaning {
+        color: #666;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .card-footer {
+        margin-top: 15px;
+        text-align: right;
+    }
+
+    .view-details {
+        display: inline-block;
+        padding: 8px 16px;
+        background: #ff6b6b;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+    }
+
+    .view-details:hover {
+        background: #ff5252;
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 40px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .no-results p {
+        color: #666;
+        margin: 10px 0;
+    }
+
+    .no-results ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+
+    .no-results li {
+        color: #666;
+        margin: 8px 0;
+    }
+
+    @media (max-width: 768px) {
+        .results-title {
+            font-size: 1.5em;
+        }
+
+        .results-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .name-card {
+            padding: 15px;
+        }
+    }
+    </style>
+</body>
+</html>

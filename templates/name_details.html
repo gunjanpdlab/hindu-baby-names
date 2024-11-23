@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name_info.name }} - Hindu Baby Name Meaning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="{{ name_info.name }} - Hindu Baby Name Meaning">
+    <meta property="og:description" content="{{ name_info.meaning }}">
+    <meta property="og:type" content="website">
+    <style>
+        .name-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .popular-badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #000;
+            font-size: 0.4em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .name-title {
+                font-size: 2em;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .popular-badge {
+                font-size: 0.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-4">{{ name_info.name }}</h1>
+                        
+                        <div class="name-details">
+                            <div class="detail-item">
+                                <h5>Meaning</h5>
+                                <p>{{ name_info.meaning }}</p>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <h5>Gender</h5>
+                                <p>{{ name_info.gender }}</p>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <h5>Rashi (Moon Sign)</h5>
+                                <p>{{ name_info.rashi }}</p>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <h5>Numerology</h5>
+                                <p>{{ name_info.numerology }}</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <a href="/{{ name_info.name[0].upper() }}/index.html" class="btn btn-primary">Back to Letter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function share(platform) {
+            const title = "{{ name_info.name }} - Hindu Baby Name Meaning";
+            const text = "{{ name_info.meaning }}";
+            const url = window.location.href;
+
+            switch(platform) {
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+                    break;
+                case 'whatsapp':
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(title + '\n' + url)}`, '_blank');
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
