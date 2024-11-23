@@ -8,6 +8,8 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 app = Flask(__name__)
+app.config['FREEZER_BASE_URL'] = 'https://gunjanpdlab.github.io/hindu-baby-names/'
+app.config['PREFERRED_URL_SCHEME'] = 'https'
 
 # Load baby names data
 def load_baby_names():
@@ -110,7 +112,7 @@ def names_by_letter(letter):
     matching_names = {name: details for name, details in baby_names.items() if name[0].upper() == letter}
     if not matching_names:
         return render_template('404.html'), 404
-    return render_template('index.html', letter=letter, names=matching_names)
+    return render_template('letter.html', letter=letter, names=matching_names)
 
 @app.route('/<letter>/<name>.html')
 def name_details(letter, name):

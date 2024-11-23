@@ -65,9 +65,9 @@
                 </div>
 
                 <!-- Alphabet Navigation -->
-                <div class="alphabet-nav mb-5">
-                    {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
-                    <a href="/{{ letter.lower() }}" class="btn btn-outline-primary m-1">{{ letter }}</a>
+                <div class="alphabet-nav mt-5">
+                    {% for l in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+                    <a href="{{ url_for('names_by_letter', letter=l) }}" class="btn btn-outline-primary m-1">{{ l }}</a>
                     {% endfor %}
                 </div>
 
