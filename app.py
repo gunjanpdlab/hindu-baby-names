@@ -105,7 +105,7 @@ def search_page():
                          results=sorted_results, 
                          query=query)
 
-@app.route('/<letter>/index.html')
+@app.route('/<string:letter>/index.html')
 def names_by_letter(letter):
     """Display names starting with the given letter."""
     letter = letter.upper()
@@ -114,7 +114,7 @@ def names_by_letter(letter):
         return render_template('404.html'), 404
     return render_template('letter.html', letter=letter, names=matching_names)
 
-@app.route('/<letter>/<name>.html')
+@app.route('/<string:letter>/<string:name>.html')
 def name_details(letter, name):
     """Display details for a specific name."""
     name_info = get_name_info(letter, name)
